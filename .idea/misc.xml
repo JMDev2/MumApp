@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/edit_text_bg.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/vie_bg.xml" value="0.127" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1685185185185185" />
         <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.1685185185185185" />
         <entry key="app/src/main/res/layout/signup_tab_fragment.xml" value="0.1685185185185185" />
       </map>

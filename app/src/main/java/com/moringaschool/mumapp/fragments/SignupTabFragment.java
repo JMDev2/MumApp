@@ -15,11 +15,19 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.moringaschool.mumapp.AppUser;
 import com.moringaschool.mumapp.R;
 
 import java.util.Objects;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class SignupTabFragment extends Fragment {
     @BindView(R.id.username)
@@ -47,6 +55,7 @@ public class SignupTabFragment extends Fragment {
         ButterKnife.bind(this, view);
         auth = FirebaseAuth.getInstance();
 
+
         button.setOnClickListener(v -> {
             String username = this.username.getText().toString().trim();
             String email = this.email.getText().toString().trim();
@@ -57,6 +66,7 @@ public class SignupTabFragment extends Fragment {
 
 
     }
+
 
     public void signup(String email, String password,String username){
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
