@@ -1,4 +1,4 @@
-package com.moringaschool.mumapp;
+package com.moringaschool.mumapp.models;
 
 public class AppUser {
 
