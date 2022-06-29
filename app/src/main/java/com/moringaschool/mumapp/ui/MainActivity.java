@@ -1,8 +1,12 @@
-git addgpackage com.moringaschool.mumapp;
+package com.moringaschool.mumapp.ui;
+
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.moringaschool.mumapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
