@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/teal_700"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/darkBlue"
     android:orientation="vertical"
     android:padding="20dp"
     android:gravity="center_vertical">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_profile_picture"
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -28,7 +28,7 @@
         android:textSize="24dp"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:text="Harry Nguyen"/>
+        android:text="BigFive"/>
 
     <TextView
         android:id="@+id/user_profile_email"
@@ -40,6 +40,6 @@
         android:textSize="22dp"
         android:textColor="@color/white"
         android:textStyle="italic"
-        android:text="chihieunguyen9a2@gmail.com"/>
+        android:text="bigfive@gmail.com"/>
 
-</RelativeLayout>
+</LinearLayout>

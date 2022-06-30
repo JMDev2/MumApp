@@ -58,6 +58,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.firebaseui:firebase-ui-database:7.1.1'
 
+    //Android libs
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'me.relex:circleindicator:2.1.6'
+
 
 //Robolectric dependencies
     testImplementation 'org.robolectric:robolectric:4.8.1'
