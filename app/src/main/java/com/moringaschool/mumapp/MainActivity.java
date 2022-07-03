@@ -1,4 +1,5 @@
-git addgpackage com.moringaschool.mumapp;
+package com.moringaschool.mumapp;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
