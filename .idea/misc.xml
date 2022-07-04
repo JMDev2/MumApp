@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/chatactivity.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.19166666666666668" />
@@ -14,6 +15,23 @@
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/signup_tab_fragment.xml" value="0.19375" />
 >>>>>>> 0053a195f48f16d192317b1433f37144ba44f6b8
+=======
+ survey
+        <entry key="app/src/main/res/drawable/button_bg.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/edit_text_bg.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/vie_bg.xml" value="0.127" />
+        <entry key="app/src/main/res/layout/activity_child_detail.xml" value="0.19076923076923077" />
+        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1685185185185185" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_status.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_welcome_back.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.1685185185185185" />
+        <entry key="app/src/main/res/layout/signup_tab_fragment.xml" value="0.1685185185185185" />
+
+ master
+>>>>>>> 9d466ed7c07d2a7392ff9214146dbbf15675fec4
       </map>
     </option>
   </component>
