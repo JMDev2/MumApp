@@ -1,4 +1,4 @@
-package com.moringaschool.mumapp;
+package com.moringaschool.mumapp.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.moringaschool.mumapp.R;
+import com.moringaschool.mumapp.User;
 
 public class ListAdapter extends ArrayAdapter<User> {
     public ListAdapter(@NonNull Context context, int resource) {
@@ -28,10 +31,10 @@ public class ListAdapter extends ArrayAdapter<User> {
         TextView lastMsg = convertView.findViewById(R.id.lastMessage);
         TextView time = convertView.findViewById(R.id.msgtime);
 
-        imageView.setImageResource(user.imageId);
-        userName.setText(user.name);
-        lastMsg.setText(user.lastMessage);
-        time.setText(user.lastMsgTime);
+//        imageView.setImageResource(user.imageId);
+//        userName.setText(user.name);
+//        lastMsg.setText(user.lastMessage);
+//        time.setText(user.lastMsgTime);
 
 
 
