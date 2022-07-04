@@ -3,47 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-
-        <entry key="app/src/main/res/drawable/ic_facebook_round.xml" value="0.16" />
-        <entry key="app/src/main/res/drawable/ic_github_round.xml" value="0.16" />
-        <entry key="app/src/main/res/drawable/ic_information.xml" value="0.16" />
-        <entry key="app/src/main/res/drawable/ic_log_out.xml" value="0.16" />
-        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.16" />
-        <entry key="app/src/main/res/drawable/indicator_background.xml" value="0.16" />
-        <entry key="app/src/main/res/drawable/search_bar_background.xml" value="0.16" />
-        <entry key="app/src/main/res/drawable/search_cursor.xml" value="0.16" />
-        <entry key="app/src/main/res/font/roboto.xml" value="0.27291666666666664" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.17" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.10625" />
-        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24375" />
-        <entry key="app/src/main/res/layout/layout_navigation_drawer_header.xml" value="0.11803444782168186" />
-        <entry key="app/src/main/res/layout/layout_navigation_follow_us.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.24375" />
-        <entry key="app/src/main/res/menu/navigation_drawer.xml" value="0.24375" />
-        <entry key="app/src/main/res/menu/toolbar_menu.xml" value="0.24270833333333333" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
-
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19270833333333334" />
-        <entry key="app/src/main/res/layout/chatactivity.xml" value="0.19166666666666668" />
-        <entry key="app/src/main/res/layout/list_item.xml" value="0.19166666666666668" />
-
         <entry key="app/src/main/res/drawable/button_bg.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edit_text_bg.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edittext.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_child_detail.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13768115942028986" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.13768115942028986" />
+        <entry key="app/src/main/res/layout/activity_status.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.25" />
-
+        <entry key="app/src/main/res/layout/chatactivity.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_navigation_drawer_header.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_navigation_follow_us.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/list_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.13768115942028986" />
+        <entry key="app/src/main/res/layout/signup_tab_fragment.xml" value="0.19375" />
       </map>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

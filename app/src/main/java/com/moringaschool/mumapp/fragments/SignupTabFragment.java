@@ -22,8 +22,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.moringaschool.mumapp.models.AppUser;
+
 import com.moringaschool.mumapp.R;
+import com.moringaschool.mumapp.models.AppUser;
 import com.moringaschool.mumapp.ui.MainActivity;
 
 import java.util.Objects;
