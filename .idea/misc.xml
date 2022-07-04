@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="app/src/main/res/drawable/ic_facebook_round.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/ic_github_round.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/ic_information.xml" value="0.16" />
@@ -25,6 +26,21 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/layout/chatactivity.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/layout/list_item.xml" value="0.19166666666666668" />
+
+        <entry key="app/src/main/res/drawable/button_bg.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/edit_text_bg.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/edittext.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.25" />
+
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
