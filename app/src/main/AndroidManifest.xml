@@ -31,14 +31,7 @@
         <activity
 
             android:name=".ui.MainActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
-        </activity>
+            android:exported="false" />
         <activity
 
             android:name=".HomeActivity"
@@ -46,13 +39,17 @@
         <activity
            
 
-            android:name=".ui.LoginActivity"
+            android:name=".ui.SplashScreen"
             android:exported="false" />
         <activity
-            android:name=".ui.SplashScreen"
+            android:name=".ui.LoginActivity"
 
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data
