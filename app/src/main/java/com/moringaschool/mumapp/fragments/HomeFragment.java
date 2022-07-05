@@ -3,12 +3,18 @@ package com.moringaschool.mumapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.moringaschool.mumapp.HomeActivity;
 import com.moringaschool.mumapp.R;
+
+import me.relex.circleindicator.CircleIndicator3;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +22,23 @@ import com.moringaschool.mumapp.R;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    private static final long DELAY_TIME = 3 * 1000; //secs
+
+    //Banner Slider
+    private ViewPager2 bannerViewPager;
+    private CircleIndicator3 circleIndicator;
+    private List<SliderItem> sliderItems;
+    private Handler mBannerSliderHandler;
+    private Runnable mBannerRunnable;
+    private HomeActivity homeActivity;
+
+    //Top sell list
+    private RecyclerView topSellRecyclerView;
+
+    //Product List
+    private RecyclerView productRecyclerView;
+    private List<Product> productList;
+    private ProductAdapter productAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

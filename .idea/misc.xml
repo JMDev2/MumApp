@@ -13,12 +13,14 @@
         <entry key="app/src/main/res/drawable/search_cursor.xml" value="0.16" />
         <entry key="app/src/main/res/font/roboto.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10625" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/layout_navigation_drawer_header.xml" value="0.11803444782168186" />
         <entry key="app/src/main/res/layout/layout_navigation_follow_us.xml" value="0.1" />
         <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/signup_tab_fragment.xml" value="0.24375" />
         <entry key="app/src/main/res/menu/navigation_drawer.xml" value="0.24375" />
         <entry key="app/src/main/res/menu/toolbar_menu.xml" value="0.24270833333333333" />
       </map>
