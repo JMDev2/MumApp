@@ -19,6 +19,7 @@ public class UserProfile extends AppCompatActivity {
     @BindView(R.id.follwers) TextView followers;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
