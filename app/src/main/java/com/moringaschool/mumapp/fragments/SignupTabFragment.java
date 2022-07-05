@@ -1,5 +1,6 @@
 package com.moringaschool.mumapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,13 +22,16 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.moringaschool.mumapp.models.AppUser;
+
 import com.moringaschool.mumapp.R;
+import com.moringaschool.mumapp.models.AppUser;
+import com.moringaschool.mumapp.ui.MainActivity;
 
 import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 public class SignupTabFragment extends Fragment {
     @BindView(R.id.username)
@@ -45,8 +49,8 @@ public class SignupTabFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.signup_tab_fragment, container, false);
-        return root;
+
+        return inflater.inflate(R.layout.signup_tab_fragment, container, false);
     }
 
     @Override
@@ -56,6 +60,8 @@ public class SignupTabFragment extends Fragment {
         auth = FirebaseAuth.getInstance();
 
 
+
+        Button button = (Button) view.findViewById(R.id.Signup);
         button.setOnClickListener(v -> {
             String username = this.username.getText().toString().trim();
             String email = this.email.getText().toString().trim();
@@ -90,8 +96,8 @@ public class SignupTabFragment extends Fragment {
 
                         @Override
                         public void onComplete(@NonNull Task task) {
-//                            Intent intent = new Intent(getContext(), MainActivity.class);
-//                            startActivity(intent);
+                            Intent intent = new Intent(getContext(), MainActivity.class);
+                            startActivity(intent);
                         }
                     });
 

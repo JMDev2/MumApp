@@ -33,4 +33,5 @@ public class AppUser {
     public void setPushId(String pushId) {
         this.pushId = pushId;
     }
+
 }
