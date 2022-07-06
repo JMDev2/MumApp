@@ -2,12 +2,24 @@ package com.moringaschool.mumapp.models;
 
 public class AppUser {
 
-    String email;
-    String username;
+    private String email;
+    private String username;
+    private String phone;
+
     String pushId;
-    public AppUser(String email, String username) {
+
+    public AppUser(String email, String username, String phone) {
         this.email = email;
         this.username = username;
+        this.phone = phone;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -33,4 +45,5 @@ public class AppUser {
     public void setPushId(String pushId) {
         this.pushId = pushId;
     }
+
 }

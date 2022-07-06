@@ -71,6 +71,7 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.6'
 
     //Butterknife
+    implementation 'com.jakewharton:butterknife:10.2.0'
 
 
 

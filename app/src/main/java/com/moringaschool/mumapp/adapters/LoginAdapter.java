@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.moringaschool.mumapp.fragments.LoginTabFragment;
 import com.moringaschool.mumapp.fragments.SignupTabFragment;
 
+
 public class LoginAdapter extends FragmentPagerAdapter {
 
     private Context context;

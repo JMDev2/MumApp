@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.135" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/follwers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="At any stage of parenthood"
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.092" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
@@ -66,10 +66,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/follwers" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="I already have an account"
@@ -78,6 +78,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/signup"
         app:layout_constraintVertical_bias="0.299" />
 </androidx.constraintlayout.widget.ConstraintLayout>

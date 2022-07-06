@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.mumapp.R;
 import com.moringaschool.mumapp.adapters.LoginAdapter;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onClick(View BreakIteratorv) {
+    public void onClick(View v) {
 
 
     }

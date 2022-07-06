@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.199" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/parentBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="I'm already a parent"
@@ -43,14 +43,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/planBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Just planning"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/parentBtn"
         app:layout_constraintVertical_bias="0.18" />
 
     <TextView
@@ -61,7 +61,7 @@
         android:text="Let's get you connected with other parents similar to you"
         android:textAlignment="center"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/parentBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"

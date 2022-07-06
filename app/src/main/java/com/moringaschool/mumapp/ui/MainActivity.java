@@ -2,51 +2,63 @@ package com.moringaschool.mumapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
+import android.widget.Button;
 
 import com.moringaschool.mumapp.R;
-import com.moringaschool.mumapp.User;
-import com.moringaschool.mumapp.adapters.ListAdapter;
-import com.moringaschool.mumapp.databinding.ActivityMainBinding;
+import com.moringaschool.mumapp.models.ArticleResponse;
+import com.moringaschool.mumapp.network.mumApi;
+import com.moringaschool.mumapp.network.mumClient;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-ActivityMainBinding binding;
+    private Button mButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_main);
 
-        int[] imageId = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e, R.drawable.f, R.drawable.g, R.drawable.h, R.drawable.i};
+        mumApi mumApi = mumClient.getClient();
 
-        String[] name = {"Diana", "Kieru", "Joseph", "Mwangi", "Cheche", "Sylvia", "Levi", "Opunga", "David"};
-        String[] lastMessage = {"Hey", "ssup", "yooh", "whats up?", "Dinner?", "Alright", "Nimefika", "I love you", "IDC"};
-        String[] lastMsgTime = {"8:00pm", "9:00am", "7:15pm", "9:12am", "6:17pm", "6:30pm", "5:58am", "4:14am", "6:23am"};
-        String[] phoneNo = {"089000789", "089000789", "089000789", "089000789", "089000789", "089000789", "089000789", "089000789", "089000789"};
-        String[] country = {"Kenya", "Zambia", "columbia", "china", "uganda", "tanzania", "congo", "nigeria", "morocco"};
+        Call<List<ArticleResponse>> call = mumApi.getArticle();
 
-        ArrayList<User> userArrayList = new ArrayList<>();
-
-        for (int i = 0; i < imageId.length; i++) {
-
-            User user = new User(name[i], lastMessage[i], lastMsgTime[i], phoneNo[i], country[i], imageId[i]);
-            userArrayList.add(user);
-        }
-
-        ListAdapter listAdapter = new ListAdapter(MainActivity.this, userArrayList);
-        binding.listview.setAdapter(listAdapter);
-        binding.listview.setClickable(true);
-        binding.listview.setOnClickListener(new AdapterView.OnItemClickListener()) {
-
+        mButton = (Button) findViewById(R.id.button1);
+        mButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick (AdapterView <?>, parent, View view,int position, long id);
-        }
+            public void onClick(View v) {
+                call.enqueue(new Callback<List<ArticleResponse>>() {
+                    @Override
+                    public void onResponse(Call<List<ArticleResponse>> call, Response<List<ArticleResponse>> response) {
+                        if (response.isSuccessful()) {
 
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<ArticleResponse>> call, Throwable t) {
+
+                    }
+                });
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }
-}
+
+
+
+//    private void apiCall(){
+//
+//        });
+//    }
+//}

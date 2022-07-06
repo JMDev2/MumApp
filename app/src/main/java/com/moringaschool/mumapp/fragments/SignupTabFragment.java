@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,8 +23,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.moringaschool.mumapp.models.AppUser;
+
+import com.moringaschool.mumapp.Constant;
 import com.moringaschool.mumapp.R;
+import com.moringaschool.mumapp.models.AppUser;
 import com.moringaschool.mumapp.ui.MainActivity;
 
 import java.util.Objects;
@@ -41,16 +44,19 @@ public class SignupTabFragment extends Fragment {
     EditText password;
     @BindView(R.id.confirmpass)
     EditText confirmPassword;
-    @BindView(R.id.Signup)
+    @BindView(R.id.Signup1)
     Button button;
+    @BindView(R.id.phone) EditText phone;
 
     FirebaseAuth auth;
+//    private AppUser mAppUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.signup_tab_fragment, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.signup_tab_fragment, container, false);
+        return root;
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -58,22 +64,27 @@ public class SignupTabFragment extends Fragment {
         ButterKnife.bind(this, view);
         auth = FirebaseAuth.getInstance();
 
+//        mButton.setOnClickListener(this);
+//        userDetails();
 
 
-        Button button = (Button) view.findViewById(R.id.Signup);
-        button.setOnClickListener(v -> {
-            String username = this.username.getText().toString().trim();
-            String email = this.email.getText().toString().trim();
-            String password = this.password.getText().toString().trim();
-            String confirmPassword = this.confirmPassword.getText().toString().trim();
-            signup(email,password,username);
-        });
+
+
+
+    button.setOnClickListener(v -> {
+        String username = this.username.getText().toString().trim();
+        String email = this.email.getText().toString().trim();
+        String phone = this.phone.getText().toString().trim();
+        String password = this.password.getText().toString().trim();
+        String confirmPassword = this.confirmPassword.getText().toString().trim();
+        signup(email,password,username, phone);
+
+    });
 
 
     }
 
-
-    public void signup(String email, String password,String username){
+    public void signup(String email, String password,String username, String phone){
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -89,14 +100,14 @@ public class SignupTabFragment extends Fragment {
                             .getReference("User").child(uid);
                     DatabaseReference pushRef = restaurantRef.push();
                     String pushId = pushRef.getKey();
-                    AppUser newUser = new AppUser(email,username);
+                    AppUser newUser = new AppUser(email,username,phone);
                     newUser.setPushId(pushId);
                     pushRef.setValue(newUser).addOnCompleteListener(new OnCompleteListener() {
 
                         @Override
                         public void onComplete(@NonNull Task task) {
-                            Intent intent = new Intent(getContext(), MainActivity.class);
-                            startActivity(intent);
+//                            Intent intent = new Intent(getContext(), MainActivity.class);
+//                            startActivity(intent);
                         }
                     });
 
@@ -130,5 +141,18 @@ public class SignupTabFragment extends Fragment {
 
                 });
 
-    }
-}
+    }}
+//
+//    SAVING THE USER OBJECT
+//
+//    @Override
+//    public void onClick(View v) {
+//        if(v == button){
+//            DatabaseReference userRef = FirebaseDatabase
+//                    .getInstance()
+//                    .getReference(Constant.FIREBASE_CHILD_USER);
+//                    userRef.push().setValue(mAppUser);
+//
+//        }
+//    }
+//}
