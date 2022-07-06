@@ -35,7 +35,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class SignupTabFragment extends Fragment implements View.OnClickListener{
+public class SignupTabFragment extends Fragment {
     @BindView(R.id.username)
     EditText username;
     @BindView(R.id.signemail)
@@ -45,11 +45,11 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.confirmpass)
     EditText confirmPassword;
     @BindView(R.id.Signup1)
-    Button mButton;
+    Button button;
     @BindView(R.id.phone) EditText phone;
 
     FirebaseAuth auth;
-    private AppUser mAppUser;
+//    private AppUser mAppUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,20 +64,22 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener{
         ButterKnife.bind(this, view);
         auth = FirebaseAuth.getInstance();
 
-        mButton.setOnClickListener(this);
-        userDetails();
+//        mButton.setOnClickListener(this);
+//        userDetails();
 
 
 
-        };
 
-    public void userDetails(){
+
+    button.setOnClickListener(v -> {
         String username = this.username.getText().toString().trim();
         String email = this.email.getText().toString().trim();
         String phone = this.phone.getText().toString().trim();
         String password = this.password.getText().toString().trim();
         String confirmPassword = this.confirmPassword.getText().toString().trim();
         signup(email,password,username, phone);
+
+    });
 
 
     }
@@ -139,18 +141,18 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener{
 
                 });
 
-    }
-
-    //SAVING THE USER OBJECT
-
-    @Override
-    public void onClick(View v) {
-        if(v == mButton){
-            DatabaseReference userRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference(Constant.FIREBASE_CHILD_USER);
-                    userRef.push().setValue(mAppUser);
-
-        }
-    }
-}
+    }}
+//
+//    SAVING THE USER OBJECT
+//
+//    @Override
+//    public void onClick(View v) {
+//        if(v == button){
+//            DatabaseReference userRef = FirebaseDatabase
+//                    .getInstance()
+//                    .getReference(Constant.FIREBASE_CHILD_USER);
+//                    userRef.push().setValue(mAppUser);
+//
+//        }
+//    }
+//}
