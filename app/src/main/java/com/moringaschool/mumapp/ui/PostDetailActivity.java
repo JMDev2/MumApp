@@ -1,14 +1,16 @@
-package com.moringaschool.mumapp;
+package com.moringaschool.mumapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class HomeActivity extends AppCompatActivity {
+import com.moringaschool.mumapp.R;
+
+public class PostDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_post_detail);
     }
 }
