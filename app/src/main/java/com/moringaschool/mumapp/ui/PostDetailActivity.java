@@ -1,11 +1,11 @@
 package com.moringaschool.mumapp.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.view.Window;
@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.mumapp.R;
+import com.moringaschool.mumapp.adapters.CommentAdapter;
 import com.moringaschool.mumapp.models.Comment;
 
 import java.util.ArrayList;
