@@ -51,7 +51,7 @@ holder.sampleText.setText(articles.get(position).getArticleContent());
 
     @Override
     public int getItemCount() {
-        return 0;
+        return articles.size();
     }
     class myHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.Title)
