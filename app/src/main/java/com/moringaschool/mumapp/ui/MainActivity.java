@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.moringaschool.mumapp.R;
+import com.moringaschool.mumapp.adapters.ImageAdapter;
 import com.moringaschool.mumapp.adapters.articleAdapterHorizontal;
 import com.moringaschool.mumapp.network.mumApi;
 import com.moringaschool.mumapp.network.mumClient;
@@ -31,12 +34,16 @@ public class MainActivity extends AppCompatActivity {
   com.moringaschool.mumapp.models.Response result = new com.moringaschool.mumapp.models.Response();
     Gson gson = new Gson();
     RecyclerView recyclerView;
+    ViewPager viewpager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
+        viewpager = findViewById(R.id.viewPager);
+        ImageAdapter adapter = new ImageAdapter(getApplicationContext());
+        viewpager.setAdapter(adapter);
 //
 //        TabLayout tablayout = this.findViewById(R.id.tabLayout);
 //
