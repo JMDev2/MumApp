@@ -44,37 +44,37 @@ public class MainActivity extends AppCompatActivity {
         viewpager = findViewById(R.id.viewPager);
         ImageAdapter adapter = new ImageAdapter(getApplicationContext());
         viewpager.setAdapter(adapter);
-//
-//        TabLayout tablayout = this.findViewById(R.id.tabLayout);
-//
-//        tablayout.selectTab(tablayout.getTabAt(0));
-//        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                if (tab.getPosition() == 0) {
-//                    return;
-//                }
-//                if (tab.getPosition() == 2) {
-//                    Intent intent = new Intent(MainActivity.this, UserProfile.class);
-//                    startActivity(intent);
-//                }
-//
-//                if (tab.getPosition() == 1) {
-//                    Intent intent = new Intent(MainActivity.this, UserProfile.class);
-//                    startActivity(intent);
-//                }
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });-*-+
+
+        TabLayout tablayout = this.findViewById(R.id.tabLayout);
+
+        tablayout.selectTab(tablayout.getTabAt(0));
+        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0) {
+                    return;
+                }
+                if (tab.getPosition() == 2) {
+                    Intent intent = new Intent(MainActivity.this, UserProfile.class);
+                    startActivity(intent);
+                }
+
+                if (tab.getPosition() == 1) {
+                    Intent intent = new Intent(MainActivity.this, UserProfile.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 //        apiCall();
         mumApi mumApi = mumClient.getClient();
