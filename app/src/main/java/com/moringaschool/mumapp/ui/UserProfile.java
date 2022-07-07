@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.moringaschool.mumapp.R;
-import com.moringaschool.mumapp.models.User;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,8 +26,7 @@ public class UserProfile extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        User user = (User) getIntent().getSerializableExtra("user");
-        profileName.setText(user.getName());
+//        profileName.setText(user.getName());
 //        profileHandle.setText(user.getHandle());
 
     }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.moringaschool.mumapp.Constant;
 import com.moringaschool.mumapp.R;
 import com.moringaschool.mumapp.models.AppUser;
 import com.moringaschool.mumapp.ui.MainActivity;
@@ -33,48 +35,63 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class SignupTabFragment extends Fragment {
-    @BindView(R.id.username)
+public class SignupTabFragment extends Fragment implements View.OnClickListener{
+
+//    @BindView(R.id.Signup1)
+//    Button mButton;
+Button mButton;
     EditText username;
-    @BindView(R.id.signemail)
     EditText email;
-    @BindView(R.id.password)
+    EditText phone ;
+
     EditText password;
-    @BindView(R.id.confirmpass)
     EditText confirmPassword;
-    @BindView(R.id.Signup)
-    Button button;
+
 
     FirebaseAuth auth;
+    private AppUser mAppUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.signup_tab_fragment, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.signup_tab_fragment, container, false);
+        return root;
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        phone = view.findViewById(R.id.phone);
+        username= view.findViewById(R.id.username);
+        email = view.findViewById(R.id.signemail);
+
+
+        password= view.findViewById(R.id.password);
+        confirmPassword = view.findViewById(R.id.confirmpass);
         ButterKnife.bind(this, view);
         auth = FirebaseAuth.getInstance();
+     mButton  = view.findViewById(R.id.signup1);
+        mButton.setOnClickListener(this);
 
 
 
-        Button button = (Button) view.findViewById(R.id.Signup);
-        button.setOnClickListener(v -> {
-            String username = this.username.getText().toString().trim();
-            String email = this.email.getText().toString().trim();
-            String password = this.password.getText().toString().trim();
-            String confirmPassword = this.confirmPassword.getText().toString().trim();
-            signup(email,password,username);
-        });
+
+        };
+
+    public void userDetails(){
+        String username = this.username.getText().toString().trim();
+        String email = this.email.getText().toString().trim();
+        String phone = this.phone.getText().toString().trim();
+        String password = this.password.getText().toString().trim();
+        Toast.makeText(getContext(),username, Toast.LENGTH_SHORT).show();
+
+        String confirmPassword = this.confirmPassword.getText().toString().trim();
+        signup(email,password,username, phone);
 
 
     }
 
-
-    public void signup(String email, String password,String username){
+    public void signup(String email, String password,String username, String phone){
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -90,7 +107,7 @@ public class SignupTabFragment extends Fragment {
                             .getReference("User").child(uid);
                     DatabaseReference pushRef = restaurantRef.push();
                     String pushId = pushRef.getKey();
-                    AppUser newUser = new AppUser(email,username);
+                    AppUser newUser = new AppUser(email,username,phone);
                     newUser.setPushId(pushId);
                     pushRef.setValue(newUser).addOnCompleteListener(new OnCompleteListener() {
 
@@ -131,5 +148,19 @@ public class SignupTabFragment extends Fragment {
 
                 });
 
+    }
+
+    //SAVING THE USER OBJECT
+
+    @Override
+    public void onClick(View v) {
+        if(v == mButton){
+            userDetails();
+            DatabaseReference userRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constant.FIREBASE_CHILD_USER);
+                    userRef.push().setValue(mAppUser);
+
+        }
     }
 }
