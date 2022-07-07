@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "259778047444",
-    "project_id": "mumapp-3e785",
-    "storage_bucket": "mumapp-3e785.appspot.com"
+    "project_number": "41452249345",
+    "firebase_url": "https://mumapp-e818c-default-rtdb.firebaseio.com",
+    "project_id": "mumapp-e818c",
+    "storage_bucket": "mumapp-e818c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:259778047444:android:cdc38d30095c5ec9623a41",
+        "mobilesdk_app_id": "1:41452249345:android:7f498195bc9791e72f7b00",
         "android_client_info": {
           "package_name": "com.moringaschool.mumapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "259778047444-23uc7o1j0p55djfkg6mdeh216q39aqin.apps.googleusercontent.com",
+          "client_id": "41452249345-ju6kmuv3f6bl1q7q9k8hh4klc6svdo0q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBq0-jbO0aGPbA9rPmKIWKR2QeGSBvMB9M"
+          "current_key": "AIzaSyA92KfKFpuvg1odEiRPzApk7USzANdQtTg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "259778047444-23uc7o1j0p55djfkg6mdeh216q39aqin.apps.googleusercontent.com",
+              "client_id": "41452249345-ju6kmuv3f6bl1q7q9k8hh4klc6svdo0q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

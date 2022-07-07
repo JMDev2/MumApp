@@ -21,13 +21,14 @@
             android:name=".ui.StatusActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.IntroActivity"
+            android:name=".ui.SplashScreen"
             android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        </intent-filter>
+        </activity>
         <activity
 
             android:name=".ui.UserProfile"
@@ -44,7 +45,7 @@
         <activity
            
 
-            android:name=".ui.SplashScreen"
+            android:name=".ui.IntroActivity"
             android:exported="false" />
         <activity
             android:name=".ui.LoginActivity"
