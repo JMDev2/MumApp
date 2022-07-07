@@ -21,7 +21,7 @@ public class IntroActivity extends AppCompatActivity {
         Button btnAdd = (Button) findViewById(R.id.buttonIntro);
         TextView tvAdd = (TextView) findViewById(R.id.alreadyhave);
         tvAdd.setOnClickListener(v->{
-            Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
+            Intent intent = new Intent(IntroActivity.this, StatusActivity.class);
             startActivity(intent);
         });
         btnAdd.setOnClickListener(new View.OnClickListener() {

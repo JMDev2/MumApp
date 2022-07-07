@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.mumapp.Constant;
 import com.moringaschool.mumapp.R;
 import com.moringaschool.mumapp.models.AppUser;
+import com.moringaschool.mumapp.ui.LoginActivity;
 import com.moringaschool.mumapp.ui.MainActivity;
 
 import java.util.Objects;
@@ -65,28 +66,24 @@ Button mButton;
         username= view.findViewById(R.id.username);
         email = view.findViewById(R.id.signemail);
 
-
         password= view.findViewById(R.id.password);
         confirmPassword = view.findViewById(R.id.confirmpass);
-        ButterKnife.bind(this, view);
+
         auth = FirebaseAuth.getInstance();
      mButton  = view.findViewById(R.id.Signup1);
         mButton.setOnClickListener(this);
 
-
-
-
         };
 
     public void userDetails(){
-        String username = this.username.getText().toString().trim();
-        String email = this.email.getText().toString().trim();
-        String phone = this.phone.getText().toString().trim();
-        String password = this.password.getText().toString().trim();
-        Toast.makeText(getContext(),username, Toast.LENGTH_SHORT).show();
+        String name = username.getText().toString().trim();
+        String myEmail = email.getText().toString().trim();
+        String myPhone = phone.getText().toString().trim();
+        String pass = password.getText().toString().trim();
+        Toast.makeText(getContext(),name, Toast.LENGTH_SHORT).show();
 
         String confirmPassword = this.confirmPassword.getText().toString().trim();
-        signup(email,password,username, phone);
+        signup(myEmail,pass,name, myPhone);
 
 
     }
@@ -109,16 +106,13 @@ Button mButton;
                     String pushId = pushRef.getKey();
                     AppUser newUser = new AppUser(email,username,phone);
                     newUser.setPushId(pushId);
-                    pushRef.setValue(newUser).addOnCompleteListener(new OnCompleteListener() {
+                    pushRef.setValue(newUser);
 
-                        @Override
-                        public void onComplete(@NonNull Task task) {
-                            Intent intent = new Intent(getContext(), MainActivity.class);
-                            startActivity(intent);
-                        }
-                    });
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
 
                 } else {
+                    Log.d("SignupTabFragment", "Signup Error", task.getException());
                     Toast.makeText(getContext(), "Please Try Again", Toast.LENGTH_LONG).show();
 
                 }
@@ -156,10 +150,21 @@ Button mButton;
     public void onClick(View v) {
         if(v == mButton){
             userDetails();
-            DatabaseReference userRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference(Constant.FIREBASE_CHILD_USER);
-                    userRef.push().setValue(mAppUser);
+//            String name = username.getText().toString().trim();
+//            String myPhone = phone.getText().toString().trim();
+//            String myEmail = email.getText().toString().trim();
+//            Log.d("UserProfile", "values"+ name + myEmail + myPhone);
+//
+//            AppUser appUser = new AppUser(myEmail,name,myPhone);
+//
+//            DatabaseReference userRef = FirebaseDatabase
+//                    .getInstance()
+//                    .getReference(Constant.FIREBASE_CHILD_USER).child("1");
+//            userRef.setValue(appUser);
+//
+//            Intent intent = new Intent(getContext(), MainActivity.class);
+//            startActivity(intent);
+
 
         }
     }

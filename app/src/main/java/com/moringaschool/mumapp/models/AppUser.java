@@ -6,12 +6,15 @@ public class AppUser {
     private String username;
     private String phone;
 
-    String pushId;
+    private String pushId;
 
     public AppUser(String email, String username, String phone) {
         this.email = email;
         this.username = username;
         this.phone = phone;
+    }
+
+    public AppUser() {
     }
 
     public String getPhone() {
@@ -45,5 +48,4 @@ public class AppUser {
     public void setPushId(String pushId) {
         this.pushId = pushId;
     }
-
 }
