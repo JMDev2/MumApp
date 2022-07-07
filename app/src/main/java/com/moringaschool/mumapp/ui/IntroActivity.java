@@ -29,7 +29,7 @@ public class IntroActivity extends AppCompatActivity {
             public void onClick(View v) {
                 signup = true;
                 Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
-startActivity(intent);
+                startActivity(intent);
             }
 
         });
