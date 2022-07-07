@@ -1,14 +1,19 @@
 package com.moringaschool.mumapp.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.mumapp.R;
+import com.moringaschool.mumapp.adapters.articleAdapterHorizontal;
 import com.moringaschool.mumapp.models.ArticleResponse;
+import com.moringaschool.mumapp.models.Response;
 import com.moringaschool.mumapp.network.mumApi;
 import com.moringaschool.mumapp.network.mumClient;
 
@@ -16,11 +21,11 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button mButton;
+    public List<ArticleResponse> Response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,32 +34,40 @@ public class MainActivity extends AppCompatActivity {
 
         mumApi mumApi = mumClient.getClient();
 
-        Call<List<ArticleResponse>> call = mumApi.getArticle();
+        Call<Response> call = mumApi.getAllArticles();
 
         mButton = (Button) findViewById(R.id.button1);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                call.enqueue(new Callback<List<ArticleResponse>>() {
+                call.enqueue(new Callback<Response>() {
                     @Override
-                    public void onResponse(Call<List<ArticleResponse>> call, Response<List<ArticleResponse>> response) {
+                    public void onResponse(@NonNull Call<Response> call, @NonNull retrofit2.Response<Response> response) {
+
                         if (response.isSuccessful()) {
+                            Response = response.body().getArticleResponse();
+                            Toast.makeText(getApplicationContext(),"a toast",Toast.LENGTH_LONG);
+                            articleAdapterHorizontal horizontal = new articleAdapterHorizontal(Response,getApplicationContext());
+                            RecyclerView horizontalRecyclerView = findViewById(R.id.top_sell_recycler_view);
+                            horizontalRecyclerView.setAdapter(horizontal);
+                            horizontalRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, true));
+
+                        }else{
 
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<List<ArticleResponse>> call, Throwable t) {
-
+                    public void onFailure(Call<Response> call, Throwable t) {
+                        t.printStackTrace();
                     }
                 });
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                startActivity(intent);
             }
         });
     }
 }
-
 
 
 //    private void apiCall(){

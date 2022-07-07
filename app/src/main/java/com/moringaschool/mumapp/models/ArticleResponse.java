@@ -1,11 +1,9 @@
-
 package com.moringaschool.mumapp.models;
 
-import javax.annotation.Generated;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Generated("jsonschema2pojo")
 public class ArticleResponse {
 
     @SerializedName("Author")
