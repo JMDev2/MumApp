@@ -13,8 +13,18 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="NavigationViewStyle">
         <item name="android:textSize">24dp</item> <!-- menu item text size-->
         <item name="android:listPreferredItemHeightSmall">40dp</item><!-- menu item height-->
     </style>
+
+    <style name="Theme.MumApp.NoActionBar">
+<!--        <item name="windowActionBar">true</item>-->
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MumApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MumApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
