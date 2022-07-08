@@ -1,16 +1,12 @@
 package com.moringaschool.mumapp.ui;
 
-import static java.security.AccessController.getContext;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -18,7 +14,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,7 +22,6 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
@@ -50,18 +44,11 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.app.Dialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.Bundle;
 
 import android.view.Gravity;
 import android.view.Menu;
@@ -91,12 +78,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Uri pickedImgUri = null;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         // ini
 
@@ -130,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // set the home fragment as the default one
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment(getApplicationContext())).commit();
 
 
     }
@@ -372,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_home) {
 
             getSupportActionBar().setTitle("Home");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment(getApplicationContext())).commit();
 
         } else if (id == R.id.nav_profile) {
 

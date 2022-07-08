@@ -1,5 +1,6 @@
 package com.moringaschool.mumapp.network;
 
+import com.moringaschool.mumapp.User;
 import com.moringaschool.mumapp.models.ArticleResponse;
 import com.moringaschool.mumapp.models.Response;
 import com.moringaschool.mumapp.models.SearchArticleResponse;
@@ -14,10 +15,14 @@ public interface mumApi {
     @GET("get-allArticles")
     Call<Response> getAllArticles(
     );
+
     @GET("search-articles")
     Call<List<SearchArticleResponse>> searchArticle(
             @Query("query") String query
     );
 
+    @GET("get-allUsers")
+    Call<List<User>> getAllUsers(
+    );
 
 }

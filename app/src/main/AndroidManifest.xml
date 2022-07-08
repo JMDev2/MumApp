@@ -17,7 +17,7 @@
         android:theme="@style/Theme.MumApp"
         tools:targetApi="31">
         <activity
-            android:name=".Maina"
+            android:name=".ui.HomeDisplayActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ChildDetailActivity"
@@ -25,6 +25,7 @@
         <activity
             android:name=".ui.StatusActivity"
             android:exported="false" />
+
         <activity
             android:name=".ui.SplashScreen"
             android:exported="true">
@@ -49,7 +50,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"

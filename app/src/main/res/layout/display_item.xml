@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="210dp"
         android:layout_height="225dp"
-        android:background="#9C5959"
+        android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#8BC34A">
+                android:background="@drawable/thatimage">
 
                 <TextView
                     android:id="@+id/sampleText"
@@ -46,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="TextView"
+                    android:textColor="#F8F7F7"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:text="@string/app_name"
+                    android:textColor="#FAF9F9"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"

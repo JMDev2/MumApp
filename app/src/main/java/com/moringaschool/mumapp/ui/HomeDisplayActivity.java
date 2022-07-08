@@ -1,19 +1,14 @@
 package com.moringaschool.mumapp.ui;
 
-import static java.security.AccessController.getContext;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
@@ -41,7 +36,7 @@ public class HomeDisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_display);
         recyclerView = findViewById(R.id.recyclerView);
-        viewpager = findViewById(R.id.viewPager);
+        viewpager = findViewById(R.id.viewPagerM);
         ImageAdapter adapter = new ImageAdapter(getApplicationContext());
         viewpager.setAdapter(adapter);
 
@@ -86,10 +81,10 @@ public class HomeDisplayActivity extends AppCompatActivity {
                     result = response.body();
                     // Log.e("thisis", gson.toJson(result));
                     assert result != null;
-                    RecyclerView.LayoutManager gridLayoutManager;
-                    gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-                    recyclerView.setLayoutManager(linearLayoutManager);
+              //      RecyclerView.LayoutManager gridLayoutManager;
+//                    gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+//                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+                  //  recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, true));
                     articleAdapterHorizontal horizontal = new articleAdapterHorizontal(result.getArticleResponse(), getApplicationContext());
                     recyclerView.setAdapter(horizontal);

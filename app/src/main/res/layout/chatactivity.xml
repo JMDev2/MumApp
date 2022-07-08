@@ -4,13 +4,17 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ListView
+<!--    <ListView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/listview"-->
+<!--        tools:listitem="@layout/list_item"-->
+
+<!--    />-->
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listview"
-        tools:listitem="@layout/list_item"
-
-    />
-
-
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
