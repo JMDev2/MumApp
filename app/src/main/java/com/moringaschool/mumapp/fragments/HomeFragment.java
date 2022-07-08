@@ -110,6 +110,7 @@ public class HomeFragment extends Fragment {
         Vertical = view.findViewById(R.id.vertRecycle);
         ImageAdapter adapter = new ImageAdapter(context);
         viewpager.setAdapter(adapter);
+       for (int i = 0; i <2;i++){
         mumApi mumApi = mumClient.getClient();
         Call<Response> call = mumApi.getAllArticles();
         call.enqueue(new Callback<Response>() {
@@ -137,7 +138,7 @@ public class HomeFragment extends Fragment {
 
             }
 
-        });
+        });}
     }
 
     @Override

@@ -17,6 +17,9 @@
         android:theme="@style/Theme.MumApp"
         tools:targetApi="31">
         <activity
+            android:name=".AddArticleActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.HomeDisplayActivity"
             android:exported="false" />
         <activity
@@ -25,7 +28,6 @@
         <activity
             android:name=".ui.StatusActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.SplashScreen"
             android:exported="true">

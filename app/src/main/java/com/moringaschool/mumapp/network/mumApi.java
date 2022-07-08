@@ -8,7 +8,9 @@ import com.moringaschool.mumapp.models.SearchArticleResponse;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface mumApi {
@@ -24,5 +26,8 @@ public interface mumApi {
     @GET("get-allUsers")
     Call<List<User>> getAllUsers(
     );
+    @POST("post-user")
+    Call<User> sendUserToServer(@Body User user);
+
 
 }

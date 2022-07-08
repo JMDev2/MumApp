@@ -49,49 +49,49 @@
         app:layout_constraintVertical_bias="0.071" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/enterChildName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_bg"
         android:ems="10"
+        android:hint="Enter child's name"
         android:inputType="textPersonName"
-        android:text="Child's Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/enterAge"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        android:text="Birthday"
+        android:layout_height="35dp"
         android:background="@drawable/edit_text_bg"
+        android:ems="10"
+        android:hint="Enter their age"
+        android:inputType="date|number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/enterChildName"
         app:layout_constraintVertical_bias="0.1" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttongirl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Girl"
         android:background="@drawable/button_bg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/buttonBoy"
         app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+        app:layout_constraintTop_toBottomOf="@+id/enterAge"
         app:layout_constraintVertical_bias="0.114" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonBoy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"
@@ -99,24 +99,24 @@
         android:background="@drawable/button_bg1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+        app:layout_constraintTop_toBottomOf="@+id/enterAge"
         app:layout_constraintVertical_bias="0.114" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/anotherChild"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="another Child"
         android:background="@drawable/button_bg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button7"
+        app:layout_constraintEnd_toStartOf="@+id/AddchildNext"
         app:layout_constraintHorizontal_bias="0.622"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/buttongirl"
         app:layout_constraintVertical_bias="0.809" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/AddchildNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"
@@ -124,6 +124,6 @@
         android:background="@drawable/button_bg1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBoy"
         app:layout_constraintVertical_bias="0.809" />
 </androidx.constraintlayout.widget.ConstraintLayout>

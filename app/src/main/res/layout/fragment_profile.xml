@@ -361,7 +361,7 @@
                     app:srcCompat="@drawable/elephantt" />
 
                 <TextView
-                    android:id="@+id/email1"
+                    android:id="@+id/phonenumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
@@ -371,7 +371,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/phonee"
+                    android:id="@+id/ph"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="120dp"
@@ -382,7 +382,7 @@
                     app:layout_constraintBottom_toTopOf="@+id/linearLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/profileHandle"
-                    app:layout_constraintTop_toBottomOf="@+id/email1" />
+                    app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

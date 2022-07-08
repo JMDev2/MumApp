@@ -3,6 +3,8 @@ package com.moringaschool.mumapp.ui;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,16 +16,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 import com.moringaschool.mumapp.Constant;
 import com.moringaschool.mumapp.R;
+import com.moringaschool.mumapp.adapters.childAdapter;
 import com.moringaschool.mumapp.models.AppUser;
+import com.moringaschool.mumapp.models.Child;
+
+import java.util.AbstractCollection;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class UserProfile extends AppCompatActivity implements View.OnClickListener {
+
 //    @BindView(R.id.profileName)
 //    TextView profileName;
 //    @BindView(R.id.profileHandle)
@@ -49,8 +62,8 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-//        ButterKnife.bind(this);
-//        mSave.setOnClickListener(this);
+
+
 
     }
 
@@ -58,6 +71,7 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
 
     }
+
 }
 //
 //    @Override
