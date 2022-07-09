@@ -17,7 +17,19 @@
         android:theme="@style/Theme.MumApp"
         tools:targetApi="31">
         <activity
-            android:name=".AddArticleActivity"
+            android:name=".MessagingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChatActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.AddArticleActivity"
             android:exported="false" />
         <activity
             android:name=".ui.HomeDisplayActivity"
@@ -30,13 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.SplashScreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.UserProfile"
             android:exported="false" />

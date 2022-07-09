@@ -7,6 +7,37 @@ public class UserFirebase {
   int posts;
   int following;
   int followers;
+  String uid;
+
+
+    public UserFirebase(String name, String lastMessage, String lastMsgTime, String phoneNo, String country, String email, String imageUrl, int posts, int following, int followers, String uid) {
+        this.name = name;
+        this.lastMessage = lastMessage;
+        this.lastMsgTime = lastMsgTime;
+        this.phoneNo = phoneNo;
+        this.country = country;
+        this.email = email;
+        this.imageUrl = imageUrl;
+        this.posts = posts;
+        this.following = following;
+        this.followers = followers;
+        this.uid = uid;
+    }
+
+    public UserFirebase(String name, String lastMessage, String lastMsgTime, String phoneNo, String country, String email, String imageUrl, String pushId, int posts, int following, int followers, String uid) {
+        this.name = name;
+        this.lastMessage = lastMessage;
+        this.lastMsgTime = lastMsgTime;
+        this.phoneNo = phoneNo;
+        this.country = country;
+        this.email = email;
+        this.imageUrl = imageUrl;
+        this.pushId = pushId;
+        this.posts = posts;
+        this.following = following;
+        this.followers = followers;
+        this.uid = uid;
+    }
 
     public UserFirebase(String name, String lastMessage, String lastMsgTime, String phoneNo, String country, String email, String imageUrl, int posts, int following, int followers) {
         this.name = name;
@@ -35,15 +66,13 @@ public class UserFirebase {
         this.followers = followers;
     }
 
-//    public UserFirebase(String name, String lastMessage, String lastMsgTime, String phoneNo, String country, String imageUrl) {
-//        this.name = name;
-//        this.lastMessage = lastMessage;
-//        this.lastMsgTime = lastMsgTime;
-//        this.phoneNo = phoneNo;
-//        this.country = country;
-//        this.imageUrl = imageUrl;
-//    }
+    public String getUid() {
+        return uid;
+    }
 
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
     public String getEmail() {
         return email;
     }

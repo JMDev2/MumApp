@@ -10,41 +10,44 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.mumapp.R;
 import com.moringaschool.mumapp.User;
+import com.moringaschool.mumapp.UserFirebase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.viewHolder> {
-    
-    public ChatUserAdapter(Context context, List<User> list) {
+    private Context context;
+    List<UserFirebase> list = new ArrayList<UserFirebase>();
+    View view;
+    public ChatUserAdapter(Context context, List<UserFirebase> list) {
         this.context = context;
         this.list = list;
     }
 
-    private Context context;
-    List<User> list;
-View view;
+
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        view = layoutInflater.inflate(R.layout.dispaly_all, parent, false);
+        view = layoutInflater.inflate(R.layout.list_item, parent, false);
         ChatUserAdapter.viewHolder holder = new ChatUserAdapter.viewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-
+holder.personName.setText(list.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {

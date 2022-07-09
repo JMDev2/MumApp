@@ -116,11 +116,16 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
                             .getReference("User").child(uid);
                     DatabaseReference pushRef = restaurantRef.push();
                     String pushId = pushRef.getKey();
-                    UserFirebase FirebaseUser = new UserFirebase(username,"", "", phone, "", email,"",0,0,0);
+                    UserFirebase FirebaseUser = new UserFirebase(username,"", "", phone, "", email,"",0,0,0,uid);
                     FirebaseUser.setPushId(pushId);
-                    AppUser newUser = new AppUser(email, username, phone);
-                    newUser.setPushId(pushId);
+//                    AppUser newUser = new AppUser(email, username, phone);
+//                    newUser.setPushId(pushId);
                     pushRef.setValue(FirebaseUser);
+                    DatabaseReference reff = FirebaseDatabase
+                            .getInstance()
+                            .getReference("AllUsers");
+                   DatabaseReference pushReff = reff.push();
+                    pushReff.setValue(FirebaseUser);
                     mumApi mumApi = mumClient.getClient();
                     User DBuser = new User(username, "", "", phone, "", 1);
                     Call<User> call = mumApi.sendUserToServer(DBuser);
