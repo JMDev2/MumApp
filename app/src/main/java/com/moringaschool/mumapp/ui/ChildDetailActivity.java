@@ -22,16 +22,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ChildDetailActivity extends AppCompatActivity {
-    @BindView(R.id.enterChildName)
-    EditText childsName;
-    @BindView(R.id.enterAge)
-    EditText age;
-    @BindView(R.id.buttonBoy)
-    Button boy;
-    @BindView(R.id.buttongirl)
-    Button girl;
-    @BindView(R.id.anotherChild)
-    Button anotherChild;
+    @BindView(R.id.enterChildName) EditText childsName;
+    @BindView(R.id.enterAge) EditText age;
+    @BindView(R.id.buttonBoy) Button boy;
+    @BindView(R.id.buttongirl) Button girl;
+    @BindView(R.id.anotherChild) Button anotherChild;
     @BindView(R.id.AddchildNext)
     Button next;
     Child child;

@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.moringaschool.mumapp.R;
 
 public class SplashScreen extends AppCompatActivity {
 
     ProgressBar mProgressBar;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,10 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 3000);
+        }, 8000);
 
-
+        tv = (TextView) this.findViewById(R.id.splash);
+        tv.setSelected(true);  // Set focus to the textview
     }
 
 }

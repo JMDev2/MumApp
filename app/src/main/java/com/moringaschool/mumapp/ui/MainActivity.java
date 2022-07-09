@@ -4,15 +4,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -22,22 +18,14 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.gson.Gson;
 import com.moringaschool.mumapp.R;
-import com.moringaschool.mumapp.adapters.ImageAdapter;
-import com.moringaschool.mumapp.adapters.articleAdapterHorizontal;
 import com.moringaschool.mumapp.fragments.HomeFragment;
 import com.moringaschool.mumapp.fragments.Profile;
 import com.moringaschool.mumapp.fragments.Settings;
 import com.moringaschool.mumapp.models.Post;
-import com.moringaschool.mumapp.network.mumApi;
-import com.moringaschool.mumapp.network.mumClient;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import androidx.annotation.NonNull;
 
@@ -85,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
 
         // ini
@@ -407,6 +396,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+
 }
 
 //
@@ -426,26 +416,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        viewpager = findViewById(R.id.viewPager);
 //        ImageAdapter adapter = new ImageAdapter(getApplicationContext());
 //        viewpager.setAdapter(adapter);
-//
-//        TabLayout tablayout = this.findViewById(R.id.tabLayout);
-//
-//        tablayout.selectTab(tablayout.getTabAt(0));
-//        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                if (tab.getPosition() == 0) {
-//                    return;
-//                }
-//                if (tab.getPosition() == 2) {
-//                    Intent intent = new Intent(MainActivity.this, UserProfile.class);
-//                    startActivity(intent);
-//                }
-//
-//                if (tab.getPosition() == 1) {
-//                    Intent intent = new Intent(MainActivity.this, UserProfile.class);
-//                    startActivity(intent);
-//                }
-//            }
+
+
 //
 //            @Override
 //            public void onTabUnselected(TabLayout.Tab tab) {
