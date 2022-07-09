@@ -1,6 +1,10 @@
 package com.moringaschool.mumapp;
 
-public class UserFirebase {
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class UserFirebase implements Serializable {
     String name, lastMessage, lastMsgTime,phoneNo, country,email;
   String imageUrl;
   String pushId;

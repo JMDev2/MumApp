@@ -1,19 +1,24 @@
 package com.moringaschool.mumapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.mumapp.R;
 import com.moringaschool.mumapp.User;
 import com.moringaschool.mumapp.UserFirebase;
+import com.moringaschool.mumapp.ui.ChatThreadActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +48,12 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.viewHo
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 holder.personName.setText(list.get(position).getName());
+holder.personName.setOnClickListener(v->{
+    Intent intent = new Intent(context, ChatThreadActivity.class);
+    intent.putExtra("chatFriend",list.get(position));
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    context.startActivity(intent);
+});
     }
 
     @Override
@@ -57,8 +68,10 @@ holder.personName.setText(list.get(position).getName());
         TextView time;
         @BindView(R.id.lastMessage)
         TextView lastMessage;
-@BindView(R.id.profile_pic)
+        @BindView(R.id.profile_pic)
         ImageView profile_pic;
+
+
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);

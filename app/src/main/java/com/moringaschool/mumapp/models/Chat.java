@@ -1,11 +1,27 @@
 package com.moringaschool.mumapp.models;
 
-public class Chat {
+import com.moringaschool.mumapp.UserFirebase;
+
+import java.io.Serializable;
+
+public class Chat implements Serializable {
     private int SenderID;
     private int ReceiverID;
     private String Message;
     private int ID;
+String receiver;
+    String sender;
+    long createdAt;
 
+    public Chat() {
+    }
+
+    public Chat(String message, String receiver, String sender, long createdAt) {
+        Message = message;
+        this.receiver = receiver;
+        this.sender = sender;
+        this.createdAt = createdAt;
+    }
 
     public Chat(int senderID, int receiverID, String message, int ID) {
         SenderID = senderID;
@@ -13,6 +29,31 @@ public class Chat {
         Message = message;
         this.ID = ID;
     }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public long getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(long createdAt) {
+        this.createdAt = createdAt;
+    }
+
 
     public int getSenderID() {
         return SenderID;
