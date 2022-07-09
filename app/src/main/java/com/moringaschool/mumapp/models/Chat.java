@@ -11,12 +11,12 @@ public class Chat implements Serializable {
     private int ID;
 String receiver;
     String sender;
-    long createdAt;
+    String createdAt;
 
     public Chat() {
     }
 
-    public Chat(String message, String receiver, String sender, long createdAt) {
+    public Chat(String message, String receiver, String sender, String createdAt) {
         Message = message;
         this.receiver = receiver;
         this.sender = sender;
@@ -46,11 +46,11 @@ String receiver;
         this.sender = sender;
     }
 
-    public long getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(long createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 

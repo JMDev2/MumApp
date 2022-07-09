@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+import com.moringaschool.mumapp.Constant;
 import com.moringaschool.mumapp.R;
 import com.moringaschool.mumapp.UserFirebase;
 import com.moringaschool.mumapp.adapters.childAdapter;
@@ -49,6 +50,7 @@ public class Profile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Constant.addChild =true;
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("User").child(user.getUid());
         reference.addValueEventListener(new ValueEventListener() {

@@ -85,14 +85,17 @@ public class MessageListAdapter extends RecyclerView.Adapter {
         SentMessageHolder(View itemView) {
             super(itemView);
             messageText = (TextView) itemView.findViewById(R.id.text_gchat_message_me);
-         //   timeText = (TextView) itemView.findViewById(R.id.text_message_time);
+            timeText = itemView.findViewById(R.id.text_gchat_timestamp_me);
+            //   timeText = (TextView) itemView.findViewById(R.id.text_message_time);
         }
 
         void bind(Chat message) {
             messageText.setText(message.getMessage());
-
+            if (message.getCreatedAt() != "0") {
+                timeText.setText(message.getCreatedAt());
+            }
             // Format the stored timestamp into a readable String using method.
-           // timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
+            // timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
         }
     }
 
@@ -104,6 +107,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
             super(itemView);
 
             messageText = (TextView) itemView.findViewById(R.id.text_gchat_message_other);
+            timeText = itemView.findViewById(R.id.text_gchat_timestamp_other);
 //            timeText = (TextView) itemView.findViewById(R.id.text_message_time);
 //            nameText = (TextView) itemView.findViewById(R.id.text_message_name);
 //            profileImage = (ImageView) itemView.findViewById(R.id.image_message_profile);
@@ -111,7 +115,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
 
         void bind(Chat message) {
             messageText.setText(message.getMessage());
-
+            timeText.setText(message.getCreatedAt());
             // Format the stored timestamp into a readable String using method.
 //            timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
 //

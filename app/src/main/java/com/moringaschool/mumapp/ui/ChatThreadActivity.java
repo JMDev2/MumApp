@@ -3,12 +3,14 @@ package com.moringaschool.mumapp.ui;
 import static com.moringaschool.mumapp.Constant.FIREBASE_USER;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -31,6 +33,9 @@ import com.moringaschool.mumapp.adapters.childAdapter;
 import com.moringaschool.mumapp.models.Chat;
 import com.moringaschool.mumapp.models.Child;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +46,7 @@ public class ChatThreadActivity extends AppCompatActivity {
     private DatabaseReference reference;
     static boolean refresh = true;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,7 @@ public class ChatThreadActivity extends AppCompatActivity {
 
         //  Intent intent = new Intent();
         UserFirebase user = (UserFirebase) getIntent().getSerializableExtra("chatFriend");
+        getSupportActionBar().setTitle(user.getName());
         Log.e("userr", new Gson().toJson(user));
         Button send = findViewById(R.id.button_gchat_send);
         EditText message = findViewById(R.id.edit_gchat_message);
@@ -58,6 +65,10 @@ public class ChatThreadActivity extends AppCompatActivity {
             chat.setMessage(message.getText().toString().trim());
             chat.setSender(FIREBASE_USER);
             chat.setReceiver(user.getUid());
+            LocalDateTime today = LocalDateTime.now();
+            String formattedDate = today.format(DateTimeFormatter.ofPattern("HH:mm"));
+           // Log.e("date",formattedDate);
+            chat.setCreatedAt(formattedDate);
             String receiver = user.getUid();
             chat.setReceiver(receiver);
             DatabaseReference reff = FirebaseDatabase
@@ -94,8 +105,16 @@ public class ChatThreadActivity extends AppCompatActivity {
                 mMessageAdapter = new MessageListAdapter(getApplicationContext(), messageList);
                 mMessageRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 mMessageRecycler.setAdapter(mMessageAdapter);
-                mMessageRecycler.scrollToPosition(messageList.size());
+                mMessageRecycler.scrollToPosition(messageList.size()-1);
 
+
+              //  LocalDate today = LocalDate.now();
+
+//                LocalDate date = LocalDate.now();
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
+//                String text = date.format(formatter);
+//                Log.e("date",text);
+//                LocalDate parsedDate = LocalDate.parse(text, formatter);
 
                 // mMessageAdapter.notifyDataSetChanged();
             }
@@ -107,4 +126,5 @@ public class ChatThreadActivity extends AppCompatActivity {
         });
 
     }
+
 }

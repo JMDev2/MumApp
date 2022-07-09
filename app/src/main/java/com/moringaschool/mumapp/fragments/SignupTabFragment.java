@@ -127,8 +127,7 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
                    DatabaseReference pushReff = reff.push();
                     pushReff.setValue(FirebaseUser);
                     mumApi mumApi = mumClient.getClient();
-                    User DBuser = new User(username, "", "", phone, "", 1);
-                    Call<User> call = mumApi.sendUserToServer(DBuser);
+                   // User DBuser = new User(username, "", "", phone, "", 1);
 
 //                    call.enqueue(new Callback<User>() {
 //                        @Override

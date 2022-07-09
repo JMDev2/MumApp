@@ -25,9 +25,12 @@ import com.moringaschool.mumapp.Constant;
 import com.moringaschool.mumapp.R;
 import com.moringaschool.mumapp.UserFirebase;
 import com.moringaschool.mumapp.adapters.ChatUserAdapter;
+import com.moringaschool.mumapp.adapters.MessageListAdapter;
 import com.moringaschool.mumapp.adapters.childAdapter;
+import com.moringaschool.mumapp.models.Chat;
 import com.moringaschool.mumapp.models.Child;
 
+import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -37,11 +40,16 @@ public class ChatActivity extends AppCompatActivity {
 
     private DatabaseReference reference;
     private List<UserFirebase> users = new ArrayList<>();
+    private List<Chat> messageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatactivity);
+
+
+
+
         Constant.FIREBASE_USER = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         RecyclerView recyclerView = findViewById(R.id.chatRecyclerView);
@@ -54,7 +62,6 @@ public class ChatActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     UserFirebase user = dataSnapshot.getValue(UserFirebase.class);
                     users.add(user);
-                //    Log.e("useeeeeer",new Gson().toJson(user));
                 }
                users = users.stream().filter(user-> !user.getUid().equals(FIREBASE_USER)).collect(Collectors.toList());
                 ChatUserAdapter adapter = new ChatUserAdapter(getApplicationContext(),users);

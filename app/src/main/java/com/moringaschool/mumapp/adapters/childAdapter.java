@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringaschool.mumapp.Constant;
 import com.moringaschool.mumapp.R;
 import com.moringaschool.mumapp.models.ArticleResponse;
 import com.moringaschool.mumapp.models.Child;
@@ -49,7 +50,7 @@ public class childAdapter extends RecyclerView.Adapter<childAdapter.myHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull myHolder holder, int position) {
-        if (position == list.size()) {
+        if (position == list.size()&& Constant.addChild) {
             holder.childsName.setVisibility(View.INVISIBLE);
             holder.childImage.setVisibility(View.INVISIBLE);
             holder.addChild.setVisibility(View.VISIBLE);
@@ -59,6 +60,9 @@ public class childAdapter extends RecyclerView.Adapter<childAdapter.myHolder> {
                 context.startActivity(intent);
             });
 
+        }
+        if(!Constant.addChild&& position==list.size()){
+            holder.childsName.setVisibility(View.GONE);
         }
         if (position < list.size()) {
             holder.childImage.setImageResource(R.drawable.emoticon);

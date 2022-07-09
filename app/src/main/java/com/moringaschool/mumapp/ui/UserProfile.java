@@ -25,11 +25,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.moringaschool.mumapp.Constant;
 import com.moringaschool.mumapp.R;
+import com.moringaschool.mumapp.UserFirebase;
 import com.moringaschool.mumapp.adapters.childAdapter;
 import com.moringaschool.mumapp.models.AppUser;
 import com.moringaschool.mumapp.models.Child;
 
 import java.util.AbstractCollection;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -37,24 +39,30 @@ import butterknife.ButterKnife;
 
 public class UserProfile extends AppCompatActivity implements View.OnClickListener {
 
-//    @BindView(R.id.profileName)
-//    TextView profileName;
-//    @BindView(R.id.profileHandle)
-//    TextView profileHandle;
-//    @BindView(R.id.numberOfPosts)
-//    TextView posts;
-//    @BindView(R.id.following)
-//    TextView following;
-//    @BindView(R.id.follwers)
-//    TextView followers;
-//    @BindView(R.id.username)
-//    EditText username;
-//    @BindView(R.id.signemail)
-//    EditText email;
-//    @BindView(R.id.phonee)
-//    EditText phone;
-//    @BindView(R.id.Signup1)
-//    Button mSave;
+    @BindView(R.id.profileName)
+    TextView profileName;
+    @BindView(R.id.profileHandle)
+    TextView profileHandle;
+    @BindView(R.id.numberOfPosts)
+    TextView posts;
+    @BindView(R.id.following)
+    TextView following;
+    @BindView(R.id.follwers)
+    TextView followers;
+    @BindView(R.id.username)
+    EditText username;
+    @BindView(R.id.signemail)
+    EditText email;
+    @BindView(R.id.phone)
+    EditText phone;
+    @BindView(R.id.Signup1)
+    Button mSave;
+    private DatabaseReference reference;
+    private List<Child> children = new ArrayList<Child>();
+    RecyclerView recyclerView;
+    UserFirebase user;
+    private List<UserFirebase> users = new ArrayList<UserFirebase>();
+
 
 //    private AppUser mAppUser;
 
@@ -62,9 +70,71 @@ public class UserProfile extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+Constant.addChild = false;
+     user = (UserFirebase) getIntent().getSerializableExtra("user");
+        reference = FirebaseDatabase.getInstance().getReference("User").child(user.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    UserFirebase child = dataSnapshot.getValue(UserFirebase.class);
+                    users.add(child);
+                }
+                TextView email = findViewById(R.id.profileHandle);
+                TextView name = findViewById(R.id.profileName);
+                TextView phone = findViewById(R.id.phonenumber);
+                TextView posts = findViewById(R.id.numberOfPosts);
+                TextView followers = findViewById(R.id.follwers);
+                TextView following= findViewById(R.id.following);
+                phone.setText(users.get(0).getPhoneNo());
+                name.setText(users.get(0).getName());
+                email.setText(users.get(0).getEmail());
+                posts.setText(String.valueOf(users.get(0).getPosts()));
+                followers.setText(String.valueOf(users.get(0).getFollowers()));
+                following.setText(String.valueOf(users.get(0).getFollowing()));
+
+//                childAdapter childAdapter = new childAdapter(children, getActivity());
+//                recyclerView.setAdapter(childAdapter);
+//                RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+//                recyclerView.setLayoutManager(gridLayoutManager);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        recyclerView = findViewById(R.id.childrenRecyc);
+        refresh();
+
+    }
+    void refresh() {
 
 
+        for (int i = 0; i <= 0; i++) {
+            reference = FirebaseDatabase.getInstance().getReference("children").child(user.getUid());
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Child child = dataSnapshot.getValue(Child.class);
+                        children.add(child);
+                    }
+                    childAdapter childAdapter = new childAdapter(children, getApplicationContext());
+                    recyclerView.setAdapter(childAdapter);
+                    RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
+                    recyclerView.setLayoutManager(gridLayoutManager);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }
     }
 
     @Override

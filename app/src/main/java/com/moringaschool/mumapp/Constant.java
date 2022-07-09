@@ -10,6 +10,7 @@ public class Constant {
     public static final String FIREBASE_CHILD_USER = "users";
    // public static  boolean L
     public static  String FIREBASE_USER= "";
+    public static boolean addChild = true;
 
 }
 

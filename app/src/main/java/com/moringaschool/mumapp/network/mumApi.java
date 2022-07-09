@@ -26,8 +26,8 @@ public interface mumApi {
     @GET("get-allUsers")
     Call<List<User>> getAllUsers(
     );
-    @POST("post-user")
-    Call<User> sendUserToServer(@Body User user);
+    @POST("post-article")
+    Call<ArticleResponse> sendPost(@Body ArticleResponse article);
 
 
 }
