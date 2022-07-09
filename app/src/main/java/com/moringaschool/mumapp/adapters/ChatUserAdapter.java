@@ -44,6 +44,7 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.viewHo
     View view;
     private List<Chat> messageList = new ArrayList<Chat>();
     private DatabaseReference reference;
+
     public ChatUserAdapter(Context context, List<UserFirebase> list) {
         this.context = context;
         this.list = list;
@@ -74,18 +75,20 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.viewHo
                     if (message.getSender().equals(list.get(position).getUid()) && message.getReceiver().equals(FIREBASE_USER) || message.getSender().equals(FIREBASE_USER) && message.getReceiver().equals(list.get(position).getUid())) {
                         messageList.add(message);
                     }
-                    holder.lastMessage.setText(messageList.get(messageList.size()-1).getMessage());
+
+                    if (messageList.size() != 0) {
+                        holder.lastMessage.setText(messageList.get(messageList.size() - 1).getMessage());
+                    }
 //                    if(messageList.get(messageList.size()-1).getReceiver().equals(FIREBASE_USER)){
 //                        holder.lastMessage.setTextColor(R.drawable.blue_button);
 //                    }
 
-                    holder.time.setText(messageList.get(messageList.size()-1).getCreatedAt());
+                    if (messageList.size() != 0) {
+                        holder.time.setText(messageList.get(messageList.size() - 1).getCreatedAt());
+                    }
 
                     Log.e("messages", new Gson().toJson(message));
                 }
-
-
-
 
 
             }
@@ -97,19 +100,19 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.viewHo
         });
 
 
-holder.personName.setText(list.get(position).getName());
-holder.personName.setOnClickListener(v->{
-    Intent intent = new Intent(context, ChatThreadActivity.class);
-    intent.putExtra("chatFriend",list.get(position));
-    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    context.startActivity(intent);
-});
-holder.profile_pic.setOnClickListener(V->{
-    Intent intent = new Intent(context, UserProfile.class);
-    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    intent.putExtra("user",list.get(position));
-    context.startActivity(intent);
-});
+        holder.personName.setText(list.get(position).getName());
+        holder.personName.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ChatThreadActivity.class);
+            intent.putExtra("chatFriend", list.get(position));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
+        holder.profile_pic.setOnClickListener(V -> {
+            Intent intent = new Intent(context, UserProfile.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("user", list.get(position));
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -130,7 +133,7 @@ holder.profile_pic.setOnClickListener(V->{
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }
