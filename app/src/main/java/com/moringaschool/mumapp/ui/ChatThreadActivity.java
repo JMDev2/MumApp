@@ -97,26 +97,12 @@ public class ChatThreadActivity extends AppCompatActivity {
                     }
                     Log.e("messages", new Gson().toJson(message));
                 }
-                //  mMessageAdapter = new MessageListAdapter(getApplicationContext(), messageList);
-
-
                 RecyclerView mMessageRecycler;
                 mMessageRecycler = (RecyclerView) findViewById(R.id.recycler_gchat);
                 mMessageAdapter = new MessageListAdapter(getApplicationContext(), messageList);
                 mMessageRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 mMessageRecycler.setAdapter(mMessageAdapter);
                 mMessageRecycler.scrollToPosition(messageList.size()-1);
-
-
-              //  LocalDate today = LocalDate.now();
-
-//                LocalDate date = LocalDate.now();
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
-//                String text = date.format(formatter);
-//                Log.e("date",text);
-//                LocalDate parsedDate = LocalDate.parse(text, formatter);
-
-                // mMessageAdapter.notifyDataSetChanged();
             }
 
             @Override

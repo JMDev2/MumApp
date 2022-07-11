@@ -31,9 +31,11 @@ import com.moringaschool.mumapp.models.Post;
 import com.moringaschool.mumapp.models.Response;
 import com.moringaschool.mumapp.network.mumApi;
 import com.moringaschool.mumapp.network.mumClient;
+import com.moringaschool.mumapp.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,7 +46,7 @@ public class HomeFragment extends Fragment {
     private static Context context;
     Gson gson = new Gson();
     RecyclerView recyclerView;
-    ViewPager viewpager;
+  ViewPager viewpager;
     RecyclerView Vertical;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -64,6 +66,8 @@ public class HomeFragment extends Fragment {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     List<Post> postList;
+
+
 
     public HomeFragment(Context context) {
         this.context = context;
@@ -108,9 +112,11 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.fragmentRecycler);
         viewpager = view.findViewById(R.id.viewPagerM);
         Vertical = view.findViewById(R.id.vertRecycle);
+        java.util.Timer timer = new java.util.Timer();
+        timer.scheduleAtFixedRate(new The_slide_timer(),2000,3000);
         ImageAdapter adapter = new ImageAdapter(context);
         viewpager.setAdapter(adapter);
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 10; i++) {
             mumApi mumApi = mumClient.getClient();
             Call<Response> call = mumApi.getAllArticles();
             call.enqueue(new Callback<Response>() {
@@ -128,12 +134,10 @@ public class HomeFragment extends Fragment {
                         articleAdapterHorizontal horizontal = new articleAdapterHorizontal(result.getArticleResponse(), context);
                         Vertical.setLayoutManager(linearLayoutManager);
                         Vertical.setAdapter(vertical);
-                            recyclerView.setLayoutManager(horizontalManager);
-                            recyclerView.setAdapter(horizontal);
-                            recyclerView.scrollToPosition(0);
-
-
-                        Log.e("thisis", gson.toJson(result));
+                        recyclerView.setLayoutManager(horizontalManager);
+                        recyclerView.setAdapter(horizontal);
+                        recyclerView.scrollToPosition(0);
+                     //   Log.e("thisis", gson.toJson(result));
                     }
                 }
 
@@ -144,12 +148,13 @@ public class HomeFragment extends Fragment {
 
             });
         }
+        horizontalRequest();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-
+horizontalRequest();
         // Get List Posts from the database
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -203,5 +208,48 @@ public class HomeFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
 
+    }
+
+    private void horizontalRequest()
+    {
+        mumApi mumApi = mumClient.getClient();
+        Call<Response> call = mumApi.getAllArticles();
+        call.enqueue(new Callback<Response>() {
+            @Override
+            public void onResponse(Call<com.moringaschool.mumapp.models.Response> call, retrofit2.Response<Response> response) {
+                if (response.isSuccessful()) {
+                    result = response.body();
+                    RecyclerView.LayoutManager horizontalManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+                    articleAdapterHorizontal horizontal = new articleAdapterHorizontal(result.getArticleResponse(), context);
+                    recyclerView.setLayoutManager(horizontalManager);
+                    recyclerView.setAdapter(horizontal);
+                    recyclerView.scrollToPosition(0);
+                }
+            }
+            @Override
+            public void onFailure(Call<com.moringaschool.mumapp.models.Response> call, Throwable t) {
+            }
+        });
+    }
+    public class The_slide_timer extends TimerTask {
+        @Override
+        public void run() {
+
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (viewpager.getCurrentItem()< 5-1) {
+                        viewpager.setCurrentItem(viewpager.getCurrentItem()+1);
+                    }
+                    else
+                        viewpager.setCurrentItem(0);
+                }
+            });
+        }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        horizontalRequest();
     }
 }

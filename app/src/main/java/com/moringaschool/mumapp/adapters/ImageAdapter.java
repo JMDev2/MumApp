@@ -1,20 +1,14 @@
 package com.moringaschool.mumapp.adapters;
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.collection.CircularArray;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 
 import com.moringaschool.mumapp.R;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ImageAdapter extends PagerAdapter {
     Context mContext;
@@ -31,7 +25,7 @@ public class ImageAdapter extends PagerAdapter {
     }
 
     private int[] sliderImageId = new int[]{
-            R.drawable.mum, R.drawable.mumapp, R.drawable.mothers,R.drawable.family, R.drawable.mummy,
+            R.drawable.baby5, R.drawable.baby2, R.drawable.babyone,R.drawable.baby3, R.drawable.baby6
     };
 
     @Override
