@@ -80,7 +80,7 @@
         android:id="@+id/viewPagerM"
         android:layout_width="0dp"
         android:layout_height="216dp"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/Recycler"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -99,11 +99,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/Recycler"
         app:layout_constraintVertical_bias="0.1" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/Recycler"
         android:layout_width="0dp"
         android:layout_height="484dp"
         app:layout_constraintBottom_toTopOf="@+id/tabLayout"

@@ -4,7 +4,9 @@ package com.moringaschool.mumapp.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ArticleResponse {
+import java.io.Serializable;
+
+public class ArticleResponse implements Serializable {
 
     @SerializedName("Author")
     @Expose

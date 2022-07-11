@@ -59,10 +59,10 @@ public class HomeFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
 
-    RecyclerView postRecyclerView ;
-    PostAdapter postAdapter ;
+    RecyclerView postRecyclerView;
+    PostAdapter postAdapter;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference ;
+    DatabaseReference databaseReference;
     List<Post> postList;
 
     public HomeFragment(Context context) {
@@ -94,51 +94,56 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View fragmentView = inflater.inflate(R.layout.home_display, container, false);
-        postRecyclerView  = fragmentView.findViewById(R.id.recyclerView);
+        postRecyclerView = fragmentView.findViewById(R.id.fragmentRecycler);
         postRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         postRecyclerView.setHasFixedSize(true);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Posts");
-        return fragmentView ;
+        return fragmentView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.fragmentRecycler);
         viewpager = view.findViewById(R.id.viewPagerM);
         Vertical = view.findViewById(R.id.vertRecycle);
         ImageAdapter adapter = new ImageAdapter(context);
         viewpager.setAdapter(adapter);
-       for (int i = 0; i <2;i++){
-        mumApi mumApi = mumClient.getClient();
-        Call<Response> call = mumApi.getAllArticles();
-        call.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<com.moringaschool.mumapp.models.Response> call, retrofit2.Response<Response> response) {
-                if (response.isSuccessful()) {
-                    result = response.body();
-                    // Log.e("thisis", gson.toJson(result));
-                    assert result != null;
-                    //      RecyclerView.LayoutManager gridLayoutManager;
+        for (int i = 0; i < 1; i++) {
+            mumApi mumApi = mumClient.getClient();
+            Call<Response> call = mumApi.getAllArticles();
+            call.enqueue(new Callback<Response>() {
+                @Override
+                public void onResponse(Call<com.moringaschool.mumapp.models.Response> call, retrofit2.Response<Response> response) {
+                    if (response.isSuccessful()) {
+                        result = response.body();
+                        // Log.e("thisis", gson.toJson(result));
+                        assert result != null;
+                        //      RecyclerView.LayoutManager gridLayoutManager;
 //                    gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-                   LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-                    articleAdapterVertical vertical = new articleAdapterVertical(result.getArticleResponse(),context);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true));
-                    articleAdapterHorizontal horizontal = new articleAdapterHorizontal(result.getArticleResponse(), context);
-                    recyclerView.setAdapter(horizontal);
-                    Vertical.setLayoutManager(linearLayoutManager);
-                    Vertical.setAdapter(vertical);
-                    Log.e("thisis", gson.toJson(result));
+                        RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(context);
+                        RecyclerView.LayoutManager horizontalManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+                        articleAdapterVertical vertical = new articleAdapterVertical(result.getArticleResponse(), context);
+                        articleAdapterHorizontal horizontal = new articleAdapterHorizontal(result.getArticleResponse(), context);
+                        Vertical.setLayoutManager(linearLayoutManager);
+                        Vertical.setAdapter(vertical);
+                            recyclerView.setLayoutManager(horizontalManager);
+                            recyclerView.setAdapter(horizontal);
+                            recyclerView.scrollToPosition(0);
+
+
+                        Log.e("thisis", gson.toJson(result));
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<com.moringaschool.mumapp.models.Response> call, Throwable t) {
+                @Override
+                public void onFailure(Call<com.moringaschool.mumapp.models.Response> call, Throwable t) {
 
-            }
+                }
 
-        });}
+            });
+        }
     }
 
     @Override
@@ -152,16 +157,15 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 postList = new ArrayList<>();
-                for (DataSnapshot postsnap: dataSnapshot.getChildren()) {
+                for (DataSnapshot postsnap : dataSnapshot.getChildren()) {
 
                     Post post = postsnap.getValue(Post.class);
-                    postList.add(post) ;
-
+                    postList.add(post);
 
 
                 }
 
-                postAdapter = new PostAdapter(getActivity(),postList);
+                postAdapter = new PostAdapter(getActivity(), postList);
                 postRecyclerView.setAdapter(postAdapter);
 
 
@@ -172,7 +176,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
 
 
     }

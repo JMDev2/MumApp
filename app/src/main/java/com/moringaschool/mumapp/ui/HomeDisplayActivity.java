@@ -35,7 +35,7 @@ public class HomeDisplayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_display);
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.fragmentRecycler);
         viewpager = findViewById(R.id.viewPagerM);
         ImageAdapter adapter = new ImageAdapter(getApplicationContext());
         viewpager.setAdapter(adapter);
