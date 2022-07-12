@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -45,12 +47,10 @@ public class Profile extends Fragment {
     }
 
 
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Constant.addChild =true;
+        Constant.addChild = true;
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("User").child(user.getUid());
         reference.addValueEventListener(new ValueEventListener() {
@@ -66,7 +66,11 @@ public class Profile extends Fragment {
                 TextView phone = view.findViewById(R.id.phonenumber);
                 TextView posts = view.findViewById(R.id.numberOfPosts);
                 TextView followers = view.findViewById(R.id.follwers);
-                TextView following= view.findViewById(R.id.following);
+                TextView following = view.findViewById(R.id.following);
+                ImageView image = (ImageView) view.findViewById(R.id.userImage);
+                if (!users.get(0).getImageUrl().equals("")) {
+                    Glide.with(getActivity().getApplicationContext()).load(users.get(0).getImageUrl()).into(image);
+                }
                 phone.setText(users.get(0).getPhoneNo());
                 name.setText(users.get(0).getName());
                 email.setText(users.get(0).getEmail());

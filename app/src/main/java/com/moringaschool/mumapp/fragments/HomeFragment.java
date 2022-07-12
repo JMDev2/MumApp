@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
     private static Context context;
     Gson gson = new Gson();
     RecyclerView recyclerView;
-  ViewPager viewpager;
+    ViewPager viewpager;
     RecyclerView Vertical;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -66,7 +66,6 @@ public class HomeFragment extends Fragment {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     List<Post> postList;
-
 
 
     public HomeFragment(Context context) {
@@ -98,8 +97,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View fragmentView = inflater.inflate(R.layout.home_display, container, false);
-        postRecyclerView = fragmentView.findViewById(R.id.fragmentRecycler);
-        postRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        postRecyclerView = fragmentView.findViewById(R.id.postedImages);
+        postRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         postRecyclerView.setHasFixedSize(true);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Posts");
@@ -113,7 +112,7 @@ public class HomeFragment extends Fragment {
         viewpager = view.findViewById(R.id.viewPagerM);
         Vertical = view.findViewById(R.id.vertRecycle);
         java.util.Timer timer = new java.util.Timer();
-        timer.scheduleAtFixedRate(new The_slide_timer(),2000,3000);
+        timer.scheduleAtFixedRate(new The_slide_timer(), 2000, 3000);
         ImageAdapter adapter = new ImageAdapter(context);
         viewpager.setAdapter(adapter);
         for (int i = 0; i < 10; i++) {
@@ -137,7 +136,7 @@ public class HomeFragment extends Fragment {
                         recyclerView.setLayoutManager(horizontalManager);
                         recyclerView.setAdapter(horizontal);
                         recyclerView.scrollToPosition(0);
-                     //   Log.e("thisis", gson.toJson(result));
+                        //   Log.e("thisis", gson.toJson(result));
                     }
                 }
 
@@ -149,12 +148,39 @@ public class HomeFragment extends Fragment {
             });
         }
         horizontalRequest();
+        for (int i = 0; i < 100; i++) {
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    postList = new ArrayList<>();
+                    for (DataSnapshot postsnap : dataSnapshot.getChildren()) {
+
+                        Post post = postsnap.getValue(Post.class);
+                        postList.add(post);
+
+
+                    }
+
+                    postAdapter = new PostAdapter(getActivity(), postList);
+                    postRecyclerView.setAdapter(postAdapter);
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
-horizontalRequest();
+        horizontalRequest();
         // Get List Posts from the database
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -210,8 +236,7 @@ horizontalRequest();
 
     }
 
-    private void horizontalRequest()
-    {
+    private void horizontalRequest() {
         mumApi mumApi = mumClient.getClient();
         Call<Response> call = mumApi.getAllArticles();
         call.enqueue(new Callback<Response>() {
@@ -226,27 +251,29 @@ horizontalRequest();
                     recyclerView.scrollToPosition(0);
                 }
             }
+
             @Override
             public void onFailure(Call<com.moringaschool.mumapp.models.Response> call, Throwable t) {
             }
         });
     }
+
     public class The_slide_timer extends TimerTask {
         @Override
         public void run() {
-if(getActivity()!=null)
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (viewpager.getCurrentItem()< 5-1) {
-                        viewpager.setCurrentItem(viewpager.getCurrentItem()+1);
+            if (getActivity() != null)
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (viewpager.getCurrentItem() < 5 - 1) {
+                            viewpager.setCurrentItem(viewpager.getCurrentItem() + 1);
+                        } else
+                            viewpager.setCurrentItem(0);
                     }
-                    else
-                        viewpager.setCurrentItem(0);
-                }
-            });
+                });
         }
     }
+
     @Override
     public void onResume() {
         super.onResume();

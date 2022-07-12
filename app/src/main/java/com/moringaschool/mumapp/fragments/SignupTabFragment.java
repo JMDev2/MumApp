@@ -108,9 +108,9 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
                 if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     String uid = user.getUid();
-                //    Log.d("name", username);
+                    //    Log.d("name", username);
                     createFirebaseUserProfile(Objects.requireNonNull(task.getResult().getUser()), username);
-                  //  Log.d("created user", "wertyuioptyuio");
+                    //  Log.d("created user", "wertyuioptyuio");
                     DatabaseReference restaurantRef = FirebaseDatabase
                             .getInstance()
                             .getReference("User").child(uid);
@@ -124,10 +124,10 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
                     DatabaseReference reff = FirebaseDatabase
                             .getInstance()
                             .getReference("AllUsers");
-                   DatabaseReference pushReff = reff.push();
+                    DatabaseReference pushReff = reff.push();
                     pushReff.setValue(FirebaseUser);
                     mumApi mumApi = mumClient.getClient();
-                   // User DBuser = new User(username, "", "", phone, "", 1);
+                    // User DBuser = new User(username, "", "", phone, "", 1);
 
 //                    call.enqueue(new Callback<User>() {
 //                        @Override
