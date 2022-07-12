@@ -15,11 +15,25 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Today's Top Sales"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Top Articles"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewPagerM" />
 
         <FrameLayout
             android:id="@+id/frameLayout"
@@ -93,11 +107,11 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPagerM"
             android:layout_width="0dp"
-            android:layout_height="216dp"
-            android:layout_marginTop="2dp"
+            android:layout_height="286dp"
+            android:layout_marginTop="7dp"
             app:layout_constraintEnd_toEndOf="@+id/fragmentRecycler"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" >
+            app:layout_constraintTop_toBottomOf="@+id/textView10">
 
         </androidx.viewpager.widget.ViewPager>
 
@@ -105,11 +119,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fragmentRecycler"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="270dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPagerM">
+            app:layout_constraintTop_toBottomOf="@+id/textView11">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -117,37 +131,60 @@
             android:id="@+id/vertRecycle"
             android:layout_width="0dp"
             android:layout_height="650dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="242dp"
+            android:layout_marginTop="3dp"
             app:layout_constraintBottom_toTopOf="@+id/tabLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView5" />
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="459dp" />
+            app:layout_constraintGuide_begin="630dp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView5"
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline2">
+            app:layout_constraintTop_toBottomOf="@+id/textView12">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/postedImages"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Some Posts by Users"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Newest Articles"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

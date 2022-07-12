@@ -72,11 +72,14 @@ public class articleAdapterHorizontal extends RecyclerView.Adapter<articleAdapte
                     UserFirebase child = dataSnapshot.getValue(UserFirebase.class);
                     users.add(child);
                 }
+                String url = users.get(0).getImageUrl();
+
                 holder.itemCard.setOnClickListener(v->
                 {
                     Intent intent = new Intent(context, OneArticle.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("author",users.get(0).getName());
+                    intent.putExtra("url",url);
                     intent.putExtra("article",articles.get(position));
                     context.startActivity(intent);
                 });
@@ -95,7 +98,7 @@ public class articleAdapterHorizontal extends RecyclerView.Adapter<articleAdapte
 
     @Override
     public int getItemCount() {
-        return articles.size();
+        return 3;
     }
 
     class myHolder extends RecyclerView.ViewHolder {

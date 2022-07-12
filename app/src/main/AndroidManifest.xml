@@ -29,7 +29,8 @@
         </activity>
         <activity
             android:name=".ui.OneArticle"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ui.ChatThreadActivity"
             android:exported="false" />
@@ -57,7 +58,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.SplashScreen"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -68,7 +68,7 @@ public class Profile extends Fragment {
                 TextView followers = view.findViewById(R.id.follwers);
                 TextView following = view.findViewById(R.id.following);
                 ImageView image = (ImageView) view.findViewById(R.id.userImage);
-                if (!users.get(0).getImageUrl().equals("")) {
+                if (!users.get(0).getImageUrl().equals("")||users.get(0).getImageUrl()==null) {
                     Glide.with(getActivity().getApplicationContext()).load(users.get(0).getImageUrl()).into(image);
                 }
                 phone.setText(users.get(0).getPhoneNo());

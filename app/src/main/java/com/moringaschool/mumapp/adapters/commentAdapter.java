@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,18 +68,30 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.myHolder
     @Override
     public void onBindViewHolder(@NonNull myHolder holder, int position) {
 
-        Constant.reference = FirebaseDatabase.getInstance().getReference("AllUsers");
+        Constant.reference = FirebaseDatabase
+                .getInstance()
+                .getReference("User").
+                child(comments
+                        .get(position)
+                        .getUid());
         Constant.reference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     UserFirebase child = dataSnapshot.getValue(UserFirebase.class);
-                    Constant.users.add(child);
+                    users.add(child);
                 }
-                Constant.users = Constant.users.stream().filter(user -> user.getUid().equals(comments.get(position).getUid())).collect(Collectors.toList());
-                Constant.passuser = Constant.users.get(0).getName();
-                holder.title.setText(Constant.passuser);
+              //  users = users.stream().filter(user -> user.getUid().equals(comments.get(position).getUid())).collect(Collectors.toList());
+                String passuser = users.get(0).getName();
+                String url = users.get(0).getImageUrl();
+
+                if (!url.equals(""))
+                {
+                    Log.e("AAAAAAAAAAA",url);
+                    Glide.with(context).load(url).into(holder.imageView);
+                }
+                holder.title.setText(passuser);
             }
 
             @Override
@@ -90,39 +104,7 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.myHolder
 
         holder.sampleText.setText(comments.get(position).getContent());
 
-//        reference = FirebaseDatabase.getInstance().getReference("User").child(comments.get(position).getAuthor());
-//      //  Log.e("author:",articles.get(position).getAuthor());
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.N)
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    UserFirebase child = dataSnapshot.getValue(UserFirebase.class);
-//                    users.add(child);
-//                }
-//          //      Log.e("userrs",new Gson().toJson(users));
-//             //   Log.e("articles",new Gson().toJson(articles.stream().forEach(user-> user.getAuthor())));
-//comments.forEach(article-> Log.e("UID",article.getAuthor()));
-//                users = users.stream().filter(user-> user.getUid().equals(comments.get(position).getAuthor())).collect(Collectors.toList());
-//            //    Log.e("userrs filterred",new Gson().toJson(users));
-//                 String passuser = users.get(0).getName();
-//                holder.itemCard.setOnClickListener(v->
-//                {
-//                    Intent intent = new Intent(context, OneArticle.class);
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    intent.putExtra("author",passuser);
-//                    intent.putExtra("article", comments.get(position));
-//                    context.startActivity(intent);
-//                });
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
     }
 
 
@@ -136,6 +118,8 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.myHolder
         TextView title;
         @BindView(R.id.Summary)
         TextView sampleText;
+        @BindView(R.id.commentImage)
+        ImageView imageView;
 
 
         public myHolder(@NonNull View itemView) {

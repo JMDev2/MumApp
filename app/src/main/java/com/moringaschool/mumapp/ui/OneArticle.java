@@ -12,9 +12,12 @@ import android.os.Bundle;
 import android.service.controls.actions.FloatAction;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+import com.moringaschool.mumapp.Constant;
 import com.moringaschool.mumapp.R;
 import com.moringaschool.mumapp.UserFirebase;
 import com.moringaschool.mumapp.adapters.MessageListAdapter;
@@ -44,6 +48,8 @@ public class OneArticle extends AppCompatActivity {
     FloatingActionButton sendComment;
     @BindView(R.id.comment)
     EditText comment;
+    @BindView(R.id.authorimage)
+    ImageView authorImage;
     DatabaseReference reference;
     private List<Comment> commentList = new ArrayList<Comment>();
 
@@ -54,8 +60,14 @@ public class OneArticle extends AppCompatActivity {
         ButterKnife.bind(this);
         ArticleResponse articleResponse = (ArticleResponse) getIntent().getSerializableExtra("article");
         String Author = getIntent().getStringExtra("author");
+        String url = getIntent().getStringExtra("url");
+        if (!url.equals(""))
+        {
+            Glide.with(getApplicationContext()).load(url).into(authorImage);
+        }
         TextView Title = (TextView) findViewById(R.id.articleTitle);
         TextView author = findViewById(R.id.articleAuthor);
+
         TextView content = (TextView) findViewById(R.id.articleContent);
         Title.setText(articleResponse.getHeading().toUpperCase());
         author.setText(("Article by "+ Author).toUpperCase());
@@ -67,7 +79,7 @@ public class OneArticle extends AppCompatActivity {
         });
 sendComment.setOnClickListener(V->{
     String theComment = comment.getText().toString().trim();
-    Comment  sentComment = new Comment(theComment,articleResponse.getAuthor(),"","");
+    Comment  sentComment = new Comment(theComment, FIREBASE_USER,"","");
     DatabaseReference restaurantRef = FirebaseDatabase
             .getInstance()
             .getReference("comments");

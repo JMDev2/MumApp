@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,6 +67,7 @@ View view;
 holder.title.setText(articles.get(position).getHeading());
 holder.sampleText.setText(articles.get(position).getArticleContent());
 
+
         reference = FirebaseDatabase.getInstance().getReference("User").child(articles.get(position).getAuthor());
       //  Log.e("author:",articles.get(position).getAuthor());
         reference.addValueEventListener(new ValueEventListener() {
@@ -78,15 +81,27 @@ holder.sampleText.setText(articles.get(position).getArticleContent());
                 }
           //      Log.e("userrs",new Gson().toJson(users));
              //   Log.e("articles",new Gson().toJson(articles.stream().forEach(user-> user.getAuthor())));
-articles.forEach(article-> Log.e("UID",article.getAuthor()));
-                users = users.stream().filter(user-> user.getUid().equals(articles.get(position).getAuthor())).collect(Collectors.toList());
-            //    Log.e("userrs filterred",new Gson().toJson(users));
+              articles.forEach(article-> Log.e("UID",article.getAuthor()));
+                users = users.stream()
+                        .filter(user-> user
+                                .getUid()
+                                .equals(articles
+                                        .get(position)
+                                        .getAuthor()))
+                        .collect(Collectors.toList());
+                if (!users.get(0).getImageUrl().equals("")||users.get(0).getImageUrl()==null)
+                {
+                    Glide.with(context).load(users.get(0).getImageUrl()).into(holder.image);
+                }
+                //    Log.e("userrs filterred",new Gson().toJson(users));
                  String passuser = users.get(0).getName();
+                String url = users.get(0).getImageUrl();
                 holder.itemCard.setOnClickListener(v->
                 {
                     Intent intent = new Intent(context, OneArticle.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("author",passuser);
+                    intent.putExtra("url",url);
                     intent.putExtra("article",articles.get(position));
                     context.startActivity(intent);
                 });
@@ -112,6 +127,8 @@ articles.forEach(article-> Log.e("UID",article.getAuthor()));
         TextView sampleText;
         @BindView(R.id.cardView)
         CardView itemCard;
+        @BindView(R.id.idIVCourseImage)
+        ImageView image;
 
         public myHolder(@NonNull View itemView) {
             super(itemView);

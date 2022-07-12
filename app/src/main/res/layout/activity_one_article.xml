@@ -9,17 +9,28 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/e48acf4f283797dd543f0e3843ba7bd3"
-        android:backgroundTint="#8D626567"
+        android:background="@color/white"
         android:backgroundTintMode="src_atop"
         android:paddingBottom="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/authorimage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/chechesilvia"
+            app:layout_constraintBottom_toBottomOf="@+id/articleAuthor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/articleAuthor" />
 
         <TextView
             android:id="@+id/articleTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
             android:gravity="left"
             android:text="TextView"
+            android:textColor="#2B71B8"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,11 +39,14 @@
             android:id="@+id/articleAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/poppins_semibold"
             android:gravity="left"
             android:text="TextView"
+            android:textColor="#2B71B8"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/authorimage"
             app:layout_constraintTop_toBottomOf="@+id/articleTitle" />
 
         <TextView
@@ -42,9 +56,10 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="6dp"
+            android:fontFamily="@font/poppins_light"
             android:gravity="left"
             android:text="TextView"
-            android:textColor="#E1DDDD"
+            android:textColor="#2B71B8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/articleAuthor" />
@@ -54,6 +69,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
+            android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:text="Comments"
             android:textSize="20sp"

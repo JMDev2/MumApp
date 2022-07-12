@@ -112,7 +112,7 @@ public class HomeFragment extends Fragment {
         viewpager = view.findViewById(R.id.viewPagerM);
         Vertical = view.findViewById(R.id.vertRecycle);
         java.util.Timer timer = new java.util.Timer();
-        timer.scheduleAtFixedRate(new The_slide_timer(), 2000, 3000);
+        timer.scheduleAtFixedRate(new The_slide_timer(), 4000, 6000);
         ImageAdapter adapter = new ImageAdapter(context);
         viewpager.setAdapter(adapter);
         for (int i = 0; i < 10; i++) {
