@@ -42,7 +42,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.moringaschool.mumapp.R;
-import com.moringaschool.mumapp.fragments.HomeFragment;
+
+import com.moringaschool.mumapp.fragments.MainActivityFragment;
 import com.moringaschool.mumapp.fragments.ProfileFragment;
 import com.moringaschool.mumapp.fragments.SettingsFragment;
 import com.moringaschool.mumapp.models.ArticleResponse;
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home2);
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -96,7 +97,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -107,9 +109,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         updateNavHeader();
 
 
-        // set the home fragment as the default one
+        // set the MainActivity fragment as the default one
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container,new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,new MainActivityFragment()).commit();
 
 
 
@@ -351,14 +353,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        getMenuInflater().inflate(R.menu.mainactivity, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the MainActivity/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -378,8 +380,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_home) {
 
-            getSupportActionBar().setTitle("Home");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,new HomeFragment()).commit();
+            getSupportActionBar().setTitle("MainActivity");
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,new MainActivityFragment()).commit();
 
         } else if (id == R.id.nav_profile) {
 
