@@ -234,7 +234,7 @@ horizontalRequest();
     public class The_slide_timer extends TimerTask {
         @Override
         public void run() {
-
+if(getActivity()!=null)
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {

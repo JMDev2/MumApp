@@ -350,8 +350,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (id == R.id.nav_home) {
 
+                Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
             getSupportActionBar().setTitle("Home");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment(getApplicationContext())).commit();
+           getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment(getApplicationContext())).commit();
 
         } else if (id == R.id.nav_profile) {
 
