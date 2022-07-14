@@ -279,4 +279,5 @@ public class HomeFragment extends Fragment {
         super.onResume();
         horizontalRequest();
     }
+
 }

@@ -89,7 +89,7 @@ holder.sampleText.setText(articles.get(position).getArticleContent());
                                         .get(position)
                                         .getAuthor()))
                         .collect(Collectors.toList());
-                if (!users.get(0).getImageUrl().equals("")||users.get(0).getImageUrl()==null)
+                if (!users.get(0).getImageUrl().equals("")||!(users.get(0).getImageUrl()==null))
                 {
                     Glide.with(context).load(users.get(0).getImageUrl()).into(holder.image);
                 }

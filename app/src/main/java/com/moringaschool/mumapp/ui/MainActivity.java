@@ -362,12 +362,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportActionBar().setTitle("Profile");
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new Profile()).commit();
 
-        } else if (id == R.id.nav_settings) {
-
-            getSupportActionBar().setTitle("Settings");
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new Settings()).commit();
-
-
         } else if (id == R.id.nav_signout) {
 
             FirebaseAuth.getInstance().signOut();

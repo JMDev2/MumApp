@@ -13,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -93,7 +95,10 @@ Constant.addChild = false;
                 posts.setText(String.valueOf(users.get(0).getPosts()));
                 followers.setText(String.valueOf(users.get(0).getFollowers()));
                 following.setText(String.valueOf(users.get(0).getFollowing()));
-
+                ImageView image = (ImageView) findViewById(R.id.userImage);
+                if (!users.get(0).getImageUrl().equals("")||users.get(0).getImageUrl()!=null) {
+                    Glide.with(getApplicationContext()).load(users.get(0).getImageUrl()).into(image);
+                }
 //                childAdapter childAdapter = new childAdapter(children, getActivity());
 //                recyclerView.setAdapter(childAdapter);
 //                RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);

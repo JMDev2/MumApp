@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -107,6 +108,10 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.viewHo
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });
+        if (!list.get(position).getImageUrl().equals(""))
+        {
+            Glide.with(context).load(list.get(position).getImageUrl()).into(holder.profile_pic);
+        }
         holder.profile_pic.setOnClickListener(V -> {
             Intent intent = new Intent(context, UserProfile.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
